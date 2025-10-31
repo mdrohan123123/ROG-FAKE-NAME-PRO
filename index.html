@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🇷 🇴 🇬 FB TEAM</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000000;
+      text-align: center;
+      padding: 30px;
+      color: white;
+    }
+
+    .animated-border {
+      border: 3px solid;
+      border-image: linear-gradient(45deg, #00ff77, #00f7ff, #00ff77) 1;
+      animation: borderGlow 3s linear infinite;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px #00ff77;
+      background-color: #111111;
+    }
+
+    @keyframes borderGlow {
+      0% { box-shadow: 0 0 10px #00ff77, 0 0 20px #00ff77; }
+      50% { box-shadow: 0 0 25px #00f7ff, 0 0 30px #00f7ff; }
+      100% { box-shadow: 0 0 10px #00ff77, 0 0 20px #00ff77; }
+    }
+
+    .animated-title {
+      font-size: 28px;
+      background: linear-gradient(-45deg, #ff0000, #ff8c00, #ffd700, #32cd32, #00ced1, #1e90ff, #8a2be2);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorflow 6s ease infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes colorflow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .section { margin: 20px 0; }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background-color: #222;
+      color: white;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      margin: 3px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .copy-btn {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+    }
+
+    .change-btn {
+      background: linear-gradient(to right, #00c9ff, #92fe9d);
+      color: black;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: nowrap;
+    }
+
+    .options label {
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      background-color: #222;
+      display: flex;
+      align-items: center;
+    }
+
+    .options input[type="radio"] {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    .copied-msg {
+      font-size: 13px;
+      color: #00ff77;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animated-border">
+    <h1 class="animated-title">🇷 🇴 🇬 FB TEAM</h1>
+
+    <!-- Gender options -->
+    <div class="section">
+      <p><strong>Select Type:</strong></p>
+      <div class="options">
+        <label>
+          <input type="radio" name="gender" value="male" checked> Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="female"> Female
+        </label>
+        <label>
+          <input type="radio" name="gender" value="mixed"> Mixed
+        </label>
+      </div>
+    </div>
+
+    <!-- Name -->
+    <div class="section">
+      <p><strong>Name:</strong></p>
+      <input type="text" id="nameField" value="" readonly>
+      <div class="button-row">
+        <button class="btn copy-btn" onclick="copyText('nameField','nameMsg')">Copy Name</button>
+        <button class="btn change-btn" onclick="changeName()">Change Name</button>
+      </div>
+      <div id="nameMsg" class="copied-msg">Copied!</div>
+    </div>
+
+    <!-- Password -->
+    <div class="section">
+      <p><strong>Password:</strong></p>
+      <input type="text" id="passField" value="" readonly>
+      <div class="button-row">
+        <button class="btn copy-btn" onclick="copyText('passField','passMsg')">Copy Password</button>
+        <button class="btn change-btn" onclick="generatePassword()">Generate Password</button>
+      </div>
+      <div id="passMsg" class="copied-msg">Copied!</div>
+    </div>
+  </div>
+
+  <script>
+    const maleFirst = ["Rohan","Rohim","Mahmud","Asif","Nasir","Tanvir","Sayem","Rubel","Saif","Ridoy","Faruk","Arif","Momin","Imran","Ziaul","Shahin","Sohel","Borhan","Riyan","Tauhar","Siddiq","Hasan","Masud","Jaber","Arman","Nurul","Saiful","Faizul","Junayed","Bilal","Mithun","Suman","Nur","Muhurt","Kanj","Alam","Palash","Arnab","Shifat","Nimrud","Rifat","Tamim","Kaiyum","Saikat","Rubayet","Salahuddin","Imtiaz","Humayun","Jannat","Sami","Rafiqul","Shafiqul","Monir","Rasel","Shahriar","Fahim","Nazmul","Shuvo","Tuhin","Nayeem","Rafi","Zakir","Farhan","Mehedi","Rakib","Mahfuz","Sabbir","Jewel","Shakil","Mohiuddin","Sourav","Rashed","Shahriar","Tanveer","Shanto","Ibrahim","Samiul","Moin","Ashik","Mahin","Raihan","Azad","Shafik","Sahed","Tahmid","Riyadul","Noman","Arifur","Shamim","Fahad","Sumon","Rashedul","Junaid","Shahadat","Mahbub","Sohag","Shahid","Abir","Asad","Nayeem","Helal","Kuddus","Emran","Kamal","Kalam","Rocky"];
+    const femaleFirst = ["Faria","Sabana","Noor","Rina","Shahina","Tarao","Momota","Sana","Sumaiya","Tasnim","Mahiya","Rabeya","Apu","Rima","Nabila","Sabrina","Nishita","Jesia","Saikati","Tania","Shrabonti","Milena","Tahmina","Polki","Monalisa","Anika","Khanija","Mitu","Shiuli","Pria","Sajal","Mili","Rin","Farah","Saba","Mahi","Jannat","Koel","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Hridoya","Fahmida","Sharmin","Mousumi","Shirin","Rumana","Ayesha","Rumana","Nusrat","Sumaiya","Mahamuda","Shapla","Rina","Farzana","Roksana","Sadia","Shathi","Nabila","Tania","Farah","Moushumi","Sadia","Sharmin","Mim","Mitu","Nazia","Sabrina","Shaila","Mahima","Raisa","Mili","Soma","Pria","Anika","Tahmina","Sushmita","Mimi","Nishita","Koel","Jannat","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Mithila","Shifa","Payel","Moyna","Omi"];
+    const surnames = ["Chowdhury","Khan","Roy","Ahmed","Sarkar","Biswas","Talukdar","Majumdar","Molla","Karim","Mollah","Siddiquie","Munshi","Faruqi","Alam","Jahan","Mallick","Shah","Sikdar","Miraz","Zaman","Kabir","Akter","Haque","Chakraborty","Gazi","Kazi","Farooqui","Shikder","Uddin","Mazumder","Noor"];
+
+    function getSelectedType() {
+      return document.querySelector('input[name="gender"]:checked').value;
+    }
+
+    function getRandomName(type) {
+      let first;
+      if (type === "male") {
+        first = maleFirst[Math.floor(Math.random() * maleFirst.length)];
+      } else if (type === "female") {
+        first = femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
+      } else {
+        const isMale = Math.random() < 0.5;
+        first = isMale 
+          ? maleFirst[Math.floor(Math.random() * maleFirst.length)] 
+          : femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
+      }
+      const last = surnames[Math.floor(Math.random() * surnames.length)];
+      return first + " " + last;
+    }
+
+    function copyText(id, msgId) {
+      const input = document.getElementById(id);
+      navigator.clipboard.writeText(input.value);
+      const msg = document.getElementById(msgId);
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 2000); // 2 সেকেন্ড পরে অদৃশ্য হবে
+    }
+
+    function changeName() {
+      const type = getSelectedType();
+      const randomName = getRandomName(type);
+      document.getElementById('nameField').value = randomName;
+    }
+
+    function generatePassword() {
+      const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!";
+      let pass = "";
+      for (let i = 0; i < 8; i++) {
+        pass += charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+      const today = new Date();
+      const day = today.getDate().toString().padStart(2, '0');
+      document.getElementById('passField').value = pass + day;
+    }
+
+    // প্রথমেই নাম এবং পাসওয়ার্ড জেনারেট
+    window.onload = function() {
+      changeName();
+      generatePassword();
+    };
+  </script>
+
+</body>
+</html>
