@@ -1,226 +1,599 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🇷 🇴 🇬 FB TEAM</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #000000;
-      text-align: center;
-      padding: 30px;
-      color: white;
-    }
-
-    .animated-border {
-      border: 3px solid;
-      border-image: linear-gradient(45deg, #00ff77, #00f7ff, #00ff77) 1;
-      animation: borderGlow 3s linear infinite;
-      border-radius: 15px;
-      padding: 30px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 15px #00ff77;
-      background-color: #111111;
-    }
-
-    @keyframes borderGlow {
-      0% { box-shadow: 0 0 10px #00ff77, 0 0 20px #00ff77; }
-      50% { box-shadow: 0 0 25px #00f7ff, 0 0 30px #00f7ff; }
-      100% { box-shadow: 0 0 10px #00ff77, 0 0 20px #00ff77; }
-    }
-
-    .animated-title {
-      font-size: 28px;
-      background: linear-gradient(-45deg, #ff0000, #ff8c00, #ffd700, #32cd32, #00ced1, #1e90ff, #8a2be2);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: colorflow 6s ease infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes colorflow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .section { margin: 20px 0; }
-
-    input[type="text"] {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 18px;
-      text-align: center;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      background-color: #222;
-      color: white;
-    }
-
-    .btn {
-      padding: 8px 15px;
-      margin: 3px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .copy-btn {
-      background: linear-gradient(to right, #ff416c, #ff4b2b);
-      color: white;
-    }
-
-    .change-btn {
-      background: linear-gradient(to right, #00c9ff, #92fe9d);
-      color: black;
-    }
-
-    .button-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .options {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: nowrap;
-    }
-
-    .options label {
-      font-size: 16px;
-      cursor: pointer;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 5px;
-      background-color: #222;
-      display: flex;
-      align-items: center;
-    }
-
-    .options input[type="radio"] {
-      margin-right: 5px;
-      cursor: pointer;
-    }
-
-    .copied-msg {
-      font-size: 13px;
-      color: #00ff77;
-      margin-top: 5px;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>🇷 🇴 🇬 FB TEAM · NAME & PASSWORD Generator | Cyber Ripple Edition</title>
+    
+    <!-- Tailwind CSS (Lightweight) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Futuristic & Cyber -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library (light) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00f2ea',
+                            purple: '#7000ff',
+                            red: '#ff0050',
+                            gold: '#ffd700',
+                            dark: '#020205'
+                        }
+                    },
+                    fontFamily: {
+                        cyber: ['Orbitron', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite alternate',
+                        'border-flow': 'borderFlow 3s ease-in-out infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 5px #00f2ea' },
+                            '100%': { boxShadow: '0 0 25px #00f2ea, 0 0 35px #7000ff' }
+                        },
+                        borderFlow: {
+                            '0%': { borderColor: '#00f2ea33' },
+                            '50%': { borderColor: '#7000ffcc' },
+                            '100%': { borderColor: '#00f2ea33' }
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                            '100%': { transform: 'translateY(0px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Global Reset & Premium Effects */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: radial-gradient(circle at 30% 10%, #05070f, #000000);
+            font-family: 'Inter', 'Rajdhani', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Desktop custom cursor */
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+            #custom-cursor {
+                width: 36px;
+                height: 36px;
+                border: 2px solid #00f2ea;
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+                backdrop-filter: blur(4px);
+                background: rgba(0, 242, 234, 0.08);
+                box-shadow: 0 0 20px rgba(0,242,234,0.6);
+            }
+            #cursor-dot {
+                width: 6px;
+                height: 6px;
+                background: #ff0050;
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s;
+            }
+        }
+        
+        /* Premium Animated Cyber Grid */
+        .cyber-grid {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 242, 234, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 234, 0.07) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridSlide 20s linear infinite;
+            z-index: -2;
+            opacity: 0.4;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes gridSlide {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+        
+        /* Glowing Orbs */
+        .glow-orb-1 {
+            position: fixed;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(112,0,255,0.3) 0%, rgba(0,242,234,0) 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+            top: -30%;
+            left: -20%;
+            animation: float 12s infinite alternate;
+        }
+        .glow-orb-2 {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0,242,234,0.2) 0%, rgba(112,0,255,0) 70%);
+            border-radius: 50%;
+            filter: blur(110px);
+            z-index: -1;
+            pointer-events: none;
+            bottom: -30%;
+            right: -20%;
+            animation: float 15s infinite alternate-reverse;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -30px) scale(1.1); }
+        }
+        
+        /* Ultra Premium Glass Card */
+        .glass-premium {
+            background: rgba(8, 12, 22, 0.72);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 242, 234, 0.35);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 200, 0.15);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-premium:hover {
+            border-color: rgba(0, 242, 234, 0.7);
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(0, 242, 234, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Animated Border Shine */
+        .glass-premium::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00f2ea, #7000ff, #ff0050, #00f2ea);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+        
+        .glass-premium:hover::before {
+            opacity: 0.15;
+            animation: borderRotate 3s linear infinite;
+        }
+        
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        /* Neon Input Fields */
+        .neon-input {
+            transition: all 0.25s ease;
+            background: rgba(0, 0, 0, 0.55);
+        }
+        .neon-input:focus {
+            border-color: #00f2ea;
+            box-shadow: 0 0 20px rgba(0, 242, 234, 0.5);
+            outline: none;
+            background: rgba(0, 0, 0, 0.75);
+            transform: scale(1.01);
+        }
+        
+        /* Premium Radio Buttons */
+        .radio-cyber {
+            accent-color: #00f2ea;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+        .radio-cyber:active {
+            transform: scale(0.9);
+        }
+        
+        /* Glowing Buttons with Ripple effect container */
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+        
+        .btn-ripple:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 0 12px rgba(0, 242, 234, 0.5));
+        }
+        
+        .btn-ripple:active {
+            transform: translateY(1px);
+        }
+        
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 234, 0.7) 0%, rgba(112, 0, 255, 0.5) 100%);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(6);
+                opacity: 0;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #010101; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #00f2ea, #7000ff); border-radius: 20px; }
+        
+        /* Copy Toast Animation */
+        .toast-copy {
+            animation: toastRise 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+        @keyframes toastRise {
+            from { opacity: 0; transform: translateY(12px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .glass-premium {
+                backdrop-filter: blur(14px);
+            }
+            .btn-ripple {
+                padding: 0.6rem 0.8rem;
+            }
+        }
+        
+        /* Floating shine on card */
+        .shine-overlay {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            transform: skewX(-25deg);
+            pointer-events: none;
+            transition: left 0.7s ease;
+        }
+        .glass-premium:hover .shine-overlay {
+            left: 150%;
+        }
+        
+        /* Label ripple support */
+        .ripple-label {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="animated-border">
-    <h1 class="animated-title">🇷 🇴 🇬 FB TEAM</h1>
+    <!-- Custom Cursors (Desktop only) -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-dot"></div>
 
-    <!-- Gender options -->
-    <div class="section">
-      <p><strong>Select Type:</strong></p>
-      <div class="options">
-        <label>
-          <input type="radio" name="gender" value="male" checked> Male
-        </label>
-        <label>
-          <input type="radio" name="gender" value="female"> Female
-        </label>
-        <label>
-          <input type="radio" name="gender" value="mixed"> Mixed
-        </label>
-      </div>
+    <!-- Background Premium Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="cyber-grid"></div>
+        <div class="glow-orb-1"></div>
+        <div class="glow-orb-2"></div>
     </div>
 
-    <!-- Name -->
-    <div class="section">
-      <p><strong>Name:</strong></p>
-      <input type="text" id="nameField" value="" readonly>
-      <div class="button-row">
-        <button class="btn copy-btn" onclick="copyText('nameField','nameMsg')">Copy Name</button>
-        <button class="btn change-btn" onclick="changeName()">Change Name</button>
-      </div>
-      <div id="nameMsg" class="copied-msg">Copied!</div>
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center px-4 py-12 md:py-20 relative z-10">
+        <div class="max-w-md w-full mx-auto" data-aos="fade-up" data-aos-duration="700" data-aos-delay="50">
+            <!-- Main Glass Card -->
+            <div id="tilt-card" class="glass-premium rounded-2xl md:rounded-3xl overflow-hidden relative transition-all duration-300">
+                <div class="shine-overlay"></div>
+                <div class="p-5 md:p-7 relative z-2">
+                    
+                    <!-- Header Section -->
+                    <div class="text-center mb-6">
+                        <div class="flex justify-center items-center gap-2 mb-2 animate-float">
+                            <i class="fas fa-skull text-2xl md:text-3xl text-brand-cyan animate-pulse"></i>
+                            <h1 class="text-2xl md:text-3xl font-cyber font-black bg-gradient-to-r from-white via-brand-cyan to-brand-purple bg-clip-text text-transparent tracking-tight">
+                                🇷 🇴 🇬 FB TEAM
+                            </h1>
+                            <i class="fas fa-bolt text-2xl md:text-3xl text-brand-gold"></i>
+                        </div>
+                        <div class="inline-flex items-center gap-1.5 bg-white/5 backdrop-blur-sm px-3 py-1 rounded-full border border-brand-cyan/40">
+                            <i class="fas fa-dragon text-brand-cyan text-[10px]"></i>
+                            <span class="text-[9px] md:text-[11px] font-tech font-bold tracking-[0.2em] text-brand-cyan">NAME & PASSWORD Generator</span>
+                            <i class="fas fa-crown text-yellow-400 text-[10px]"></i>
+                        </div>
+                        <div class="h-px w-16 mx-auto mt-3 bg-gradient-to-r from-transparent via-brand-cyan to-transparent"></div>
+                    </div>
+
+                    <!-- Gender Selection -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-2 text-brand-cyan font-tech font-semibold text-xs uppercase tracking-wider mb-2">
+                            <i class="fas fa-venus-mars text-xs"></i>
+                            <span>SELECT GENDER</span>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-2.5">
+                            <label class="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm border border-brand-cyan/50 rounded-full px-3.5 py-1.5 md:px-5 md:py-2 cursor-pointer transition-all hover:bg-brand-cyan/10 hover:scale-105 ripple-label" data-ripple>
+                                <input type="radio" name="gender" value="male" checked class="radio-cyber">
+                                <i class="fas fa-mars text-brand-cyan text-sm"></i>
+                                <span class="font-bold text-xs md:text-sm">MALE</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm border border-brand-purple/50 rounded-full px-3.5 py-1.5 md:px-5 md:py-2 cursor-pointer transition-all hover:bg-brand-purple/10 hover:scale-105 ripple-label" data-ripple>
+                                <input type="radio" name="gender" value="female" class="radio-cyber">
+                                <i class="fas fa-venus text-brand-purple text-sm"></i>
+                                <span class="font-bold text-xs md:text-sm">FEMALE</span>
+                            </label>
+                            <label class="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm border border-brand-red/50 rounded-full px-3.5 py-1.5 md:px-5 md:py-2 cursor-pointer transition-all hover:bg-brand-red/10 hover:scale-105 ripple-label" data-ripple>
+                                <input type="radio" name="gender" value="mixed" class="radio-cyber">
+                                <i class="fas fa-genderless text-brand-red text-sm"></i>
+                                <span class="font-bold text-xs md:text-sm">MIXED</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Name Section -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-2 text-brand-cyan font-tech font-semibold text-xs uppercase tracking-wider mb-1.5">
+                            <i class="fas fa-user-astronaut text-xs"></i>
+                            <span>FULL NAME</span>
+                        </div>
+                        <div class="relative group">
+                            <input type="text" id="nameField" readonly class="w-full bg-black/50 border border-brand-cyan/40 rounded-xl py-3 md:py-4 px-4 text-white font-mono text-center text-sm md:text-base font-bold tracking-wide backdrop-blur-sm transition-all neon-input focus:ring-2 focus:ring-brand-cyan">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-brand-cyan/40 text-xs group-hover:text-brand-cyan transition-colors">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-3">
+                            <button onclick="changeName()" class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-brand-purple/80 to-brand-purple/40 hover:from-brand-purple hover:to-brand-purple/70 text-white font-cyber font-bold py-2.5 md:py-3 px-3 rounded-xl transition-all duration-200 border border-white/10 btn-ripple text-xs md:text-sm">
+                                <i class="fas fa-sync-alt text-xs"></i> CHANGE
+                            </button>
+                            <button onclick="copyText('nameField','nameMsg')" class="flex-1 flex items-center justify-center gap-1.5 bg-black/60 backdrop-blur border border-brand-cyan/40 hover:bg-brand-cyan/20 text-white font-cyber font-bold py-2.5 md:py-3 px-3 rounded-xl transition-all duration-200 btn-ripple text-xs md:text-sm">
+                                <i class="fas fa-copy text-xs"></i> COPY
+                            </button>
+                        </div>
+                        <div id="nameMsg" class="hidden mt-1.5 text-brand-cyan text-[10px] font-tech text-center"></div>
+                    </div>
+
+                    <!-- Password Section -->
+                    <div class="mb-5">
+                        <div class="flex items-center gap-2 text-brand-cyan font-tech font-semibold text-xs uppercase tracking-wider mb-1.5">
+                            <i class="fas fa-key text-xs"></i>
+                            <span>SECURE PASSWORD</span>
+                        </div>
+                        <div class="relative group">
+                            <input type="text" id="passField" readonly class="w-full bg-black/50 border border-brand-cyan/40 rounded-xl py-3 md:py-4 px-4 text-white font-mono text-center text-sm md:text-base font-bold tracking-wider backdrop-blur-sm transition-all neon-input">
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 text-brand-cyan/40 text-xs group-hover:text-brand-cyan transition-colors">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-3">
+                            <button onclick="generatePassword()" class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-brand-cyan/80 to-brand-cyan/40 hover:from-brand-cyan hover:to-brand-cyan/70 text-black font-cyber font-bold py-2.5 md:py-3 px-3 rounded-xl transition-all duration-200 shadow-[0_0_12px_rgba(0,242,234,0.4)] btn-ripple text-xs md:text-sm">
+                                <i class="fas fa-shield-alt text-xs"></i> GENERATE
+                            </button>
+                            <button onclick="copyText('passField','passMsg')" class="flex-1 flex items-center justify-center gap-1.5 bg-black/60 backdrop-blur border border-brand-cyan/40 hover:bg-brand-cyan/20 text-white font-cyber font-bold py-2.5 md:py-3 px-3 rounded-xl transition-all duration-200 btn-ripple text-xs md:text-sm">
+                                <i class="fas fa-copy text-xs"></i> COPY
+                            </button>
+                        </div>
+                        <div id="passMsg" class="hidden mt-1.5 text-brand-cyan text-[10px] font-tech text-center"></div>
+                    </div>
+
+                    <!-- Footer Badges -->
+                    <div class="mt-5 pt-3 text-center border-t border-white/10 flex flex-wrap justify-center gap-3 text-[9px] md:text-[11px] text-gray-400 font-tech">
+                        <span class="flex items-center gap-1"><i class="fas fa-lock text-brand-cyan text-[10px]"></i> 100% SUCURE</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-bolt text-brand-gold text-[10px]"></i> SUPER FAST </span>
+                        <span class="flex items-center gap-1"><i class="fab fa-freebsd"></i> ROG | HUB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-600 text-[8px] md:text-[10px] font-tech mt-3 opacity-50">
+                <i class="fas fa-crown text-yellow-600/40"></i> 🇷 🇴 🇬 FB TEAM 2026 · All Time Alhamdulillah  <i class="fas fa-crown text-yellow-600/40"></i>
+            </div>
+        </div>
     </div>
 
-    <!-- Password -->
-    <div class="section">
-      <p><strong>Password:</strong></p>
-      <input type="text" id="passField" value="" readonly>
-      <div class="button-row">
-        <button class="btn copy-btn" onclick="copyText('passField','passMsg')">Copy Password</button>
-        <button class="btn change-btn" onclick="generatePassword()">Generate Password</button>
-      </div>
-      <div id="passMsg" class="copied-msg">Copied!</div>
-    </div>
-  </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // ====================== ORIGINAL NAME DATASETS ===================
+        const maleFirst = ["Rohan","Rohim","Mahmud","Asif","Nasir","Tanvir","Sayem","Rubel","Saif","Ridoy","Faruk","Arif","Momin","Imran","Ziaul","Shahin","Sohel","Borhan","Riyan","Tauhar","Siddiq","Hasan","Masud","Jaber","Arman","Nurul","Saiful","Faizul","Junayed","Bilal","Mithun","Suman","Nur","Muhurt","Kanj","Alam","Palash","Arnab","Shifat","Nimrud","Rifat","Tamim","Kaiyum","Saikat","Rubayet","Salahuddin","Imtiaz","Humayun","Jannat","Sami","Rafiqul","Shafiqul","Monir","Rasel","Shahriar","Fahim","Nazmul","Shuvo","Tuhin","Nayeem","Rafi","Zakir","Farhan","Mehedi","Rakib","Mahfuz","Sabbir","Jewel","Shakil","Mohiuddin","Sourav","Rashed","Shahriar","Tanveer","Shanto","Ibrahim","Samiul","Moin","Ashik","Mahin","Raihan","Azad","Shafik","Sahed","Tahmid","Riyadul","Noman","Arifur","Shamim","Fahad","Sumon","Rashedul","Junaid","Shahadat","Mahbub","Sohag","Shahid","Abir","Asad","Nayeem","Helal","Kuddus","Emran","Kamal","Kalam","Rocky"];
+        const femaleFirst = ["Faria","Sabana","Noor","Rina","Shahina","Tarao","Momota","Sana","Sumaiya","Tasnim","Mahiya","Rabeya","Apu","Rima","Nabila","Sabrina","Nishita","Jesia","Saikati","Tania","Shrabonti","Milena","Tahmina","Polki","Monalisa","Anika","Khanija","Mitu","Shiuli","Pria","Sajal","Mili","Rin","Farah","Saba","Mahi","Jannat","Koel","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Hridoya","Fahmida","Sharmin","Mousumi","Shirin","Rumana","Ayesha","Rumana","Nusrat","Sumaiya","Mahamuda","Shapla","Rina","Farzana","Roksana","Sadia","Shathi","Nabila","Tania","Farah","Moushumi","Sadia","Sharmin","Mim","Mitu","Nazia","Sabrina","Shaila","Mahima","Raisa","Mili","Soma","Pria","Anika","Tahmina","Sushmita","Mimi","Nishita","Koel","Jannat","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Mithila","Shifa","Payel","Moyna","Omi"];
+        const surnames = ["Chowdhury","Khan","Roy","Ahmed","Sarkar","Biswas","Talukdar","Majumdar","Molla","Karim","Mollah","Siddiquie","Munshi","Faruqi","Alam","Jahan","Mallick","Shah","Sikdar","Miraz","Zaman","Kabir","Akter","Haque","Chakraborty","Gazi","Kazi","Farooqui","Shikder","Uddin","Mazumder","Noor"];
 
-  <script>
-    const maleFirst = ["Rohan","Rohim","Mahmud","Asif","Nasir","Tanvir","Sayem","Rubel","Saif","Ridoy","Faruk","Arif","Momin","Imran","Ziaul","Shahin","Sohel","Borhan","Riyan","Tauhar","Siddiq","Hasan","Masud","Jaber","Arman","Nurul","Saiful","Faizul","Junayed","Bilal","Mithun","Suman","Nur","Muhurt","Kanj","Alam","Palash","Arnab","Shifat","Nimrud","Rifat","Tamim","Kaiyum","Saikat","Rubayet","Salahuddin","Imtiaz","Humayun","Jannat","Sami","Rafiqul","Shafiqul","Monir","Rasel","Shahriar","Fahim","Nazmul","Shuvo","Tuhin","Nayeem","Rafi","Zakir","Farhan","Mehedi","Rakib","Mahfuz","Sabbir","Jewel","Shakil","Mohiuddin","Sourav","Rashed","Shahriar","Tanveer","Shanto","Ibrahim","Samiul","Moin","Ashik","Mahin","Raihan","Azad","Shafik","Sahed","Tahmid","Riyadul","Noman","Arifur","Shamim","Fahad","Sumon","Rashedul","Junaid","Shahadat","Mahbub","Sohag","Shahid","Abir","Asad","Nayeem","Helal","Kuddus","Emran","Kamal","Kalam","Rocky"];
-    const femaleFirst = ["Faria","Sabana","Noor","Rina","Shahina","Tarao","Momota","Sana","Sumaiya","Tasnim","Mahiya","Rabeya","Apu","Rima","Nabila","Sabrina","Nishita","Jesia","Saikati","Tania","Shrabonti","Milena","Tahmina","Polki","Monalisa","Anika","Khanija","Mitu","Shiuli","Pria","Sajal","Mili","Rin","Farah","Saba","Mahi","Jannat","Koel","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Hridoya","Fahmida","Sharmin","Mousumi","Shirin","Rumana","Ayesha","Rumana","Nusrat","Sumaiya","Mahamuda","Shapla","Rina","Farzana","Roksana","Sadia","Shathi","Nabila","Tania","Farah","Moushumi","Sadia","Sharmin","Mim","Mitu","Nazia","Sabrina","Shaila","Mahima","Raisa","Mili","Soma","Pria","Anika","Tahmina","Sushmita","Mimi","Nishita","Koel","Jannat","Irina","Raima","Mohi","Pabna","Nishin","Tushari","Mahidi","Roksana","Ankita","Sherina","Mohua","Mithila","Shifa","Payel","Moyna","Omi"];
-    const surnames = ["Chowdhury","Khan","Roy","Ahmed","Sarkar","Biswas","Talukdar","Majumdar","Molla","Karim","Mollah","Siddiquie","Munshi","Faruqi","Alam","Jahan","Mallick","Shah","Sikdar","Miraz","Zaman","Kabir","Akter","Haque","Chakraborty","Gazi","Kazi","Farooqui","Shikder","Uddin","Mazumder","Noor"];
+        function getSelectedType() {
+            return document.querySelector('input[name="gender"]:checked').value;
+        }
 
-    function getSelectedType() {
-      return document.querySelector('input[name="gender"]:checked').value;
-    }
+        function getRandomName(type) {
+            let first;
+            if (type === "male") {
+                first = maleFirst[Math.floor(Math.random() * maleFirst.length)];
+            } else if (type === "female") {
+                first = femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
+            } else {
+                const isMale = Math.random() < 0.5;
+                first = isMale ? maleFirst[Math.floor(Math.random() * maleFirst.length)] : femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
+            }
+            const last = surnames[Math.floor(Math.random() * surnames.length)];
+            return first + " " + last;
+        }
 
-    function getRandomName(type) {
-      let first;
-      if (type === "male") {
-        first = maleFirst[Math.floor(Math.random() * maleFirst.length)];
-      } else if (type === "female") {
-        first = femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
-      } else {
-        const isMale = Math.random() < 0.5;
-        first = isMale 
-          ? maleFirst[Math.floor(Math.random() * maleFirst.length)] 
-          : femaleFirst[Math.floor(Math.random() * femaleFirst.length)];
-      }
-      const last = surnames[Math.floor(Math.random() * surnames.length)];
-      return first + " " + last;
-    }
+        function changeName() {
+            const type = getSelectedType();
+            const newName = getRandomName(type);
+            document.getElementById('nameField').value = newName;
+        }
 
-    function copyText(id, msgId) {
-      const input = document.getElementById(id);
-      navigator.clipboard.writeText(input.value);
-      const msg = document.getElementById(msgId);
-      msg.style.display = "block";
-      setTimeout(() => {
-        msg.style.display = "none";
-      }, 2000); // 2 সেকেন্ড পরে অদৃশ্য হবে
-    }
+        function generatePassword() {
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!";
+            let pass = "";
+            for (let i = 0; i < 8; i++) {
+                pass += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            const today = new Date();
+            const day = today.getDate().toString().padStart(2, '0');
+            document.getElementById('passField').value = pass + day;
+        }
 
-    function changeName() {
-      const type = getSelectedType();
-      const randomName = getRandomName(type);
-      document.getElementById('nameField').value = randomName;
-    }
+        function copyText(fieldId, msgId) {
+            const inputEl = document.getElementById(fieldId);
+            if (!inputEl.value) return;
+            navigator.clipboard.writeText(inputEl.value).then(() => {
+                const msgDiv = document.getElementById(msgId);
+                msgDiv.classList.remove('hidden');
+                msgDiv.innerHTML = `<i class="fas fa-check-circle mr-1"></i> Copied to clipboard!`;
+                msgDiv.classList.add('toast-copy');
+                setTimeout(() => {
+                    msgDiv.classList.add('hidden');
+                    msgDiv.classList.remove('toast-copy');
+                }, 1500);
+            }).catch(() => alert("Manual copy"));
+        }
 
-    function generatePassword() {
-      const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*!";
-      let pass = "";
-      for (let i = 0; i < 8; i++) {
-        pass += charset.charAt(Math.floor(Math.random() * charset.length));
-      }
-      const today = new Date();
-      const day = today.getDate().toString().padStart(2, '0');
-      document.getElementById('passField').value = pass + day;
-    }
+        // ========== PREMIUM RIPPLE EFFECT ON ALL CLICKABLE ELEMENTS ==========
+        function createRipple(event, element) {
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.style.position = 'absolute';
+            ripple.style.pointerEvents = 'none';
+            element.style.position = 'relative';
+            element.style.overflow = 'hidden';
+            element.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+        
+        // Attach ripple to all buttons and interactive labels
+        const rippleElements = document.querySelectorAll('.btn-ripple, .ripple-label');
+        rippleElements.forEach(el => {
+            el.addEventListener('click', (e) => {
+                createRipple(e, el);
+            });
+            // Also ensure that if the element has child elements, ripple still works
+            el.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                const fakeEvent = { clientX: touch.clientX, clientY: touch.clientY };
+                createRipple(fakeEvent, el);
+            });
+        });
+        
+        // Also add ripple to radio labels specifically (already covered by .ripple-label)
+        // But we need to ensure radio inputs themselves don't cause double ripple
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const parentLabel = radio.closest('label');
+                if (parentLabel && parentLabel.classList.contains('ripple-label')) {
+                    createRipple(e, parentLabel);
+                }
+            });
+        });
 
-    // প্রথমেই নাম এবং পাসওয়ার্ড জেনারেট
-    window.onload = function() {
-      changeName();
-      generatePassword();
-    };
-  </script>
+        // Initialize everything instantly
+        window.addEventListener('DOMContentLoaded', () => {
+            changeName();
+            generatePassword();
+            AOS.init({ once: true, duration: 600, disable: window.innerWidth < 768 ? true : false });
+        });
 
+        // 3D TILT EFFECT (Desktop only)
+        const card = document.getElementById('tilt-card');
+        const container = card?.parentElement;
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        
+        if (card && container && !isMobile) {
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            container.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        }
+
+        // Custom Cursor (Desktop only)
+        if (!isMobile) {
+            const cursor = document.getElementById('custom-cursor');
+            const dot = document.getElementById('cursor-dot');
+            if (cursor && dot) {
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.transform = `translate(${e.clientX - 18}px, ${e.clientY - 18}px)`;
+                    dot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+                });
+                document.addEventListener('mousedown', () => {
+                    cursor.style.transform += ' scale(0.7)';
+                    dot.style.backgroundColor = '#00f2ea';
+                });
+                document.addEventListener('mouseup', () => {
+                    cursor.style.transform = cursor.style.transform.replace(' scale(0.7)', '');
+                    dot.style.backgroundColor = '#ff0050';
+                });
+            }
+        }
+
+        // Radio change updates name
+        const radios = document.querySelectorAll('input[name="gender"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => changeName());
+        });
+    </script>
 </body>
 </html>
